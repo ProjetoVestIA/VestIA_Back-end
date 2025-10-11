@@ -1,35 +1,50 @@
 package com.univesp.vestIA.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@Entity
+@Table(name = "tb_questoes")
 public class Questao {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     @NotBlank(message = "O enunciado não pode estar vazio")
     @Size(min = 5, message = "O enunciado deve ter pelo menos 5 caracteres")
     private String enunciado;
 
     @NotBlank(message = "Alternativa A não pode estar vazia")
+    @Column(length = 1000)
     @Size(min = 5, message = "Alternativa A deve ter pelo menos 5 caracteres")
     private String alternativaA;
 
     @NotBlank(message = "Alternativa B não pode estar vazia")
+    @Column(length = 1000)
     @Size(min = 5, message = "Alternativa B deve ter pelo menos 5 caracteres")
     private String alternativaB;
 
     @NotBlank(message = "Alternativa C não pode estar vazia")
+    @Column(length = 1000)
     @Size(min = 5, message = "Alternativa C deve ter pelo menos 5 caracteres")
     private String alternativaC;
 
     @NotBlank(message = "Alternativa D não pode estar vazia")
+    @Column(length = 1000)
     @Size(min = 5, message = "Alternativa D deve ter pelo menos 5 caracteres")
     private String alternativaD;
 
     @NotBlank(message = "Alternativa E não pode estar vazia")
+    @Column(length = 1000)
     @Size(min = 5, message = "Alternativa E deve ter pelo menos 5 caracteres")
     private String alternativaE;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "A resposta correta deve ser informada")
     private Resposta resposta;
 
@@ -38,6 +53,14 @@ public class Questao {
     }
 
     private String assunto;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEnunciado() {
         return enunciado;
