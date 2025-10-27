@@ -49,6 +49,18 @@ public class QuestaoController {
         // TODO: Proteger o endpoint
     }
 
+    @PostMapping ("/post/batch")
+    public ResponseEntity<List<Questao>> postBatch(@Valid @RequestBody List<Questao> questoes) {
+
+        questoes.forEach(questao -> questao.setId(null));
+        List<Questao> savedQuestoes = questaoRepository.saveAll(questoes);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(savedQuestoes); // Cria uma lista de questões, usado apenas por administradores
+
+        // TODO: Proteger o endpoint
+    }
+
     @PutMapping("/put")
     public ResponseEntity<Questao> put(@Valid @RequestBody Questao questao) {
         return questaoRepository.findById(questao.getId())
