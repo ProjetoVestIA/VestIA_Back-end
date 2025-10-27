@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -29,7 +28,6 @@ public class Usuario {
     @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
     private String senha;
 
-    @NotBlank(message = "O atributo Pontos é obrigatório!")
     private int Pontos;
 
     public Long getId() {
