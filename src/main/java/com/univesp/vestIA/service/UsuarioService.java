@@ -95,7 +95,7 @@ public class UsuarioService {
         usuarioLogin.setNome(usuario.getNome());
         usuarioLogin.setSenha("");
         usuarioLogin.setToken(gerarToken(usuario.getUsuario()));
-        usuarioLogin.setPontos(0);
+        usuarioLogin.setPontos(usuario.getPontos());
         return usuarioLogin;
 
     }
