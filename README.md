@@ -22,7 +22,7 @@ Autenticação stateless com JWT:
 - Hash de senhas com `BCryptPasswordEncoder`.
 - Filtro `OncePerRequestFilter` valida o token e popula o contexto de segurança.
 
-Endpoints públicos: `/usuarios/logar`, `/usuarios/cadastrar`, além da documentação (`/swagger-ui/**`, `/v3/api-docs/**`). Demais rotas requerem autenticação.
+Endpoints públicos: `POST /usuarios/logar`, `POST /usuarios/cadastrar`, `GET questao/all`, `GET questao/{id}`, além da documentação (`/swagger-ui/**`, `/v3/api-docs/**`). Demais rotas requerem autenticação.
 
 ## Endpoints principais
 - Usuários (`/usuarios`):
@@ -36,8 +36,8 @@ Endpoints públicos: `/usuarios/logar`, `/usuarios/cadastrar`, além da document
   - `POST /post`: cria questão (autenticado).
   - `POST /post/batch`: cria questões em lote (autenticado).
   - `PUT /put`: atualiza questão (autenticado).
-  - `GET /all`: lista todas (autenticado).
-  - `GET /{id}`: busca por id (autenticado).
+  - `GET /all`: lista todas.
+  - `GET /{id}`: busca por id.
   - `GET /assunto/{assunto}`: filtra por assunto (autenticado).
   - `DELETE /{id}`: remove questão (autenticado).
 
